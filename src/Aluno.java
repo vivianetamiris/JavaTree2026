@@ -4,48 +4,30 @@ public class Aluno implements Comparable<Aluno> {
     private String nome;
     private int matricula;
 
-    
-    public Aluno(int matricula, String nome) {
-        this.matricula = matricula;
+    public Aluno(String nome, int matricula) {
         this.nome = nome;
-    }
-
-    
-    public Aluno(int matricula) {
         this.matricula = matricula;
-        this.nome = "";
     }
 
-    
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    @Override
+    public int compareTo(Aluno outroAluno) {
+        return Integer.compare(this.matricula, outroAluno.matricula);
     }
 
-    
-    @Override
-    public int compareTo(Aluno outro) {
-        return Integer.compare(this.matricula, outro.matricula);
-    }
-
-    
-    @Override
+    @Override 
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Aluno outro = (Aluno) obj;
-        return this.matricula == outro.matricula;
+        Aluno aluno = (Aluno) obj;
+        return this.matricula == aluno.matricula;
     }
 
     @Override
@@ -53,9 +35,11 @@ public class Aluno implements Comparable<Aluno> {
         return Objects.hash(matricula);
     }
 
-    
     @Override
     public String toString() {
-        return "[Matrícula: " + matricula + " - Nome: " + nome + "]";
+        return "Aluno{" +
+                "nome='" + nome + '\'' +
+                ", matricula=" + matricula +
+                '}';
     }
 }
